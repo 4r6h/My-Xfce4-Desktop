@@ -1,0 +1,1 @@
+paru -S --noconfirm sddm sddm-sugar-candy-git;sudo systemctl enable sddm;wget https://raw.githubusercontent.com/4r6h/mysddm/main/sddm.conf;wget https://raw.githubusercontent.com/4r6h/mysddm/main/Sugar-Candy/theme.conf;sudo mv -u sddm.conf /etc/sddm.conf;sudo mv -u theme.conf /usr/share/sddm/themes/sugar-candy/theme.conf

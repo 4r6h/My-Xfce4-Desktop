@@ -1,0 +1,7 @@
+exo-open --working-directory %f --launch TerminalEmulator
+LINK="https://askubuntu.com/questions/891680/xubuntu-thunar-open-terminal-here-opens-konsole-in-homefolder"
+By default, Thunar uses the exo-open command, which is configured in the XFCE settings. If you do not have the XFCE settings app installed, 
+you can instead configure it in ~/.config/xfce4/helpers.rc:
+
+TerminalEmulator=konsole
+TerminalEmulatorDismissed=true
