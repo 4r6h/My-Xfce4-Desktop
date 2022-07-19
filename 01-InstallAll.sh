@@ -21,5 +21,9 @@ echo "Copying .bashrc"
 cp -r .bashrc $HOME/
 source $HOME/.bashrc
 echo "Sddm Configure"
-sh sddm.sh
+sh set-sddm.sh
+echo "Setting Rofi"
+sh set-rofi.sh
+echo "Setting Alacritty"
+sh set-alacritty.sh
 echo "Finsh"
