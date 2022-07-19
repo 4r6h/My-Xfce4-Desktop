@@ -2,7 +2,7 @@
 echo "Installing wget & vim"
 sudo pacman -S --noconfirm wget vim reflector
 echo "Updating Mirrors"
-wget https://raw.githubusercontent.com/4r6h/ArchyMirrorsBD/main/updatemirrors.sh;sh updatemirrors.sh
+#wget https://raw.githubusercontent.com/4r6h/ArchyMirrorsBD/main/updatemirrors.sh;sh updatemirrors.sh
 #sudo vim /etc/pacman.d/mirrorlist
 #wait
 echo "Installing Paru"
