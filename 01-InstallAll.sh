@@ -12,13 +12,13 @@ paru -Syu - <packages.txt --noconfirm
 echo "Installing Fonts"
 sh Fonts.sh
 echo downloading xresources
-wget https://raw.githubusercontent.com/4r6h/Settings/main/.Xresources
+wget https://raw.githubusercontent.com/4r6h/mybash/main/.Xresources
 echo "Copying .Xresouces"
-cp -r .Xresources $HOME/
+mv -u .Xresources $HOME/
 echo downloading bashrc
 wget https://raw.githubusercontent.com/4r6h/mybash/main/.bashrc
 echo "Copying .bashrc"
-cp -r .bashrc $HOME/
+mv -u .bashrc $HOME/
 source $HOME/.bashrc
 echo "Sddm Configure"
 sh set-sddm.sh
