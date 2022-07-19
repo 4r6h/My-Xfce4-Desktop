@@ -1,4 +1,4 @@
-paru -S --noconfirm sddm sddm-sugar-candy-git
+paru -S --noconfirm sddm sddm-theme-sugar-candy-git
 wait
 sudo systemctl enable sddm
 wait
