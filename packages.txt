@@ -84,9 +84,6 @@ ttf-ubuntu-font-family
 unrar
 unzip
 usbutils
-vi
-virtualbox-guest-utils
-wget
 which
 xdg-user-dirs
 xf86-video-vesa
