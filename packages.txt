@@ -28,7 +28,7 @@ ntfs-3g
 opendesktop-fonts
 p7zip
 pacman-contrib
-pamac-aur
+pamac-aur-git
 papirus-icon-theme
 patch
 pulseaudio
