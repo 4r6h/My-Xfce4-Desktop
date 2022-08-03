@@ -19,7 +19,7 @@ then
 else
     
 sudo useradd -g users -G sudo -s /bin/$Default_Shell -m -c "$Full_Name" $New_Username
-cat /etc/passwd | grep $New_Username; echo "$New_Username's user created"
+cat /etc/passwd | grep $New_Username; echo "$New_Username's new user created"
     break
 fi
 
