@@ -6,7 +6,10 @@ read -p "Enter your username: " username
 
 vminstall="
 pacman --needed --noconfirm -S wget vim reflector
+sh set-locale.sh
 wget -c https://raw.githubusercontent.com/4r6h/ArchyMirrorsBD/main/updatemirrors.sh;chmod +x updatemirrors.sh;sh updatemirrors.sh
+sudo pacman -S --needed --noconfirm virtualbox-guest-utils
+sudo systemctl enable vboxservice.service
 su ${username}
 sh InstallParu.sh
 paru -Syu - <packages.txt --needed --noconfirm
@@ -15,11 +18,11 @@ wget -c https://raw.githubusercontent.com/4r6h/mybash/main/mybash.sh;chmod +x my
 sh set-sddm.sh
 sh set-rofi.sh
 sh set-alacritty.sh
-sh set-locale.sh
-sh 02-Fix-display-resolution-in-Arch-Linux-VM.sh"
+"
 
 normalinstall="
 pacman --needed --noconfirm -S wget vim reflector
+sh set-locale.sh
 wget -c https://raw.githubusercontent.com/4r6h/ArchyMirrorsBD/main/updatemirrors.sh;chmod +x updatemirrors.sh;sh updatemirrors.sh
 su ${username}
 sh InstallParu.sh
@@ -29,7 +32,7 @@ wget -c https://raw.githubusercontent.com/4r6h/mybash/main/mybash.sh;chmod +x my
 sh set-sddm.sh
 sh set-rofi.sh
 sh set-alacritty.sh 
-sh set-locale.sh"
+"
 
 if [ ! -d /home/$username ]
 then
