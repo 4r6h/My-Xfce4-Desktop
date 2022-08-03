@@ -8,7 +8,7 @@ vminstall="
 pacman --needed --noconfirm -S wget vim reflector
 sh set-locale.sh
 wget -c https://raw.githubusercontent.com/4r6h/ArchyMirrorsBD/main/updatemirrors.sh;chmod +x updatemirrors.sh;sh updatemirrors.sh
-sudo pacman -S --needed --noconfirm virtualbox-guest-utils
+sudo pacman --needed --noconfirm -S virtualbox-guest-utils
 sudo systemctl enable vboxservice.service
 su ${username}
 sh InstallParu.sh
