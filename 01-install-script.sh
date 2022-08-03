@@ -33,7 +33,7 @@ sh set-locale.sh"
 
 if [ ! -d /home/$username ]
 then
-    echo "User does not exist. First create a normal user"
+    echo "User does not exist. First create a normal user with sudo or wheel privilages"
 else
 	read -r -p "Are You Installing in Virtual Machine? then press enter [(defult=Y) Y/n] " vm
     case $vm in
