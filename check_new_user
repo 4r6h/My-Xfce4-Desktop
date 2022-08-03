@@ -1,0 +1,26 @@
+#!/bin/env bash
+
+while true
+
+do
+
+read -p "Enter new user's full name: " Full_Name
+read -p "Enter new username: " New_Username
+
+echo "Example: bash, zsh, fish"
+
+read -p "Define new user's Default Shell: " Default_Shell
+
+if grep -q $New_Username "/etc/passwd";
+
+then 
+    echo "User Exist"
+
+else
+    
+sudo useradd -g users -G sudo -s /bin/$Default_Shell -m -c "$Full_Name" $New_Username
+cat /etc/passwd | grep $New_Username; echo "$New_Username's user created"
+    break
+fi
+
+done
