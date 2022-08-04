@@ -23,7 +23,6 @@ lsof
 make
 nano
 neofetch
-nerd-fonts-jetbrains-mono
 ntfs-3g
 opendesktop-fonts
 p7zip
@@ -64,7 +63,6 @@ ttf-inconsolata
 ttf-indic-otf
 ttf-input
 ttf-ionicons
-ttf-jetbrains-mono
 ttf-joypixels
 ttf-junicode
 ttf-khmer
@@ -75,12 +73,9 @@ ttf-monofur
 ttf-monoid
 ttf-opensans
 ttf-overpass
-ttf-roboto
-ttf-roboto-mono
 ttf-sarasa-gothic
 ttf-sazanami
 ttf-tibetan-machine
-ttf-ubuntu-font-family
 unrar
 unzip
 usbutils
