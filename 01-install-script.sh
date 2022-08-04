@@ -6,32 +6,32 @@ read -p "Enter your username: " username
 
 vminstall="
 pacman --needed --noconfirm -S wget vim reflector
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-locale.sh;chmod +x set-locale.sh;sh set-locale.sh
-wget -c https://raw.githubusercontent.com/4r6h/ArchyMirrorsBD/main/updatemirrors.sh;chmod +x updatemirrors.sh;sh updatemirrors.sh
+wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-locale.sh;chmod +x set-locale.sh;./set-locale.sh
+wget -c https://raw.githubusercontent.com/4r6h/ArchyMirrorsBD/main/updatemirrors.sh;chmod +x updatemirrors.sh;./updatemirrors.sh
 sudo pacman --needed --noconfirm -S virtualbox-guest-utils
 sudo systemctl enable vboxservice.service
 su ${username}
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/InstallParu.sh;chmod +x InstallParu.sh;sh InstallParu.sh
+wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/InstallParu.sh;chmod +x InstallParu.sh;./InstallParu.sh
 paru -Syu - <packages.txt --needed --noconfirm
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/InstallFonts.sh;chmod +x InstallFonts.sh;sh InstallFonts.sh
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/mybash.sh;chmod +x mybash.sh;sh mybash.sh
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-sddm.sh;chmod +x set-sddm.sh;sh set-sddm.sh
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-rofi.sh;chmod +x set-rofi.sh;sh set-rofi.sh
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-alacritty.sh;chmod +x set-alacritty.sh;sh set-alacritty.sh
+wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/InstallFonts.sh;chmod +x InstallFonts.sh;./InstallFonts.sh
+wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/mybash.sh;chmod +x mybash.sh;./mybash.sh
+wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-sddm.sh;chmod +x set-sddm.sh;./set-sddm.sh
+wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-rofi.sh;chmod +x set-rofi.sh;./set-rofi.sh
+wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-alacritty.sh;chmod +x set-alacritty.sh;./set-alacritty.sh
 "
 
 normalinstall="
 pacman --needed --noconfirm -S wget vim reflector
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-locale.sh;chmod +x set-locale.sh;sh set-locale.sh
-wget -c https://raw.githubusercontent.com/4r6h/ArchyMirrorsBD/main/updatemirrors.sh;chmod +x updatemirrors.sh;sh updatemirrors.sh
+wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-locale.sh;chmod +x set-locale.sh;./set-locale.sh
+wget -c https://raw.githubusercontent.com/4r6h/ArchyMirrorsBD/main/updatemirrors.sh;chmod +x updatemirrors.sh;./updatemirrors.sh
 su ${username}
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/InstallParu.sh;chmod +x InstallParu.sh;sh InstallParu.sh
+wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/InstallParu.sh;chmod +x InstallParu.sh;./InstallParu.sh
 paru -Syu - <packages.txt --needed --noconfirm
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/InstallFonts.sh;chmod +x InstallFonts.sh;sh InstallFonts.sh
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/mybash.sh;chmod +x mybash.sh;sh mybash.sh
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-sddm.sh;chmod +x set-sddm.sh;sh set-sddm.sh
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-rofi.sh;chmod +x set-rofi.sh;sh set-rofi.sh
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-alacritty.sh;chmod +x set-alacritty.sh;sh set-alacritty.sh
+wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/InstallFonts.sh;chmod +x InstallFonts.sh;./InstallFonts.sh
+wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/mybash.sh;chmod +x mybash.sh;./mybash.sh
+wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-sddm.sh;chmod +x set-sddm.sh;./set-sddm.sh
+wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-rofi.sh;chmod +x set-rofi.sh;./set-rofi.sh
+wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-alacritty.sh;chmod +x set-alacritty.sh;./set-alacritty.sh
 "
 
 if [ ! -d /home/$username ]
