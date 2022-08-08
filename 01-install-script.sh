@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
+if [ $( whoami ) = "root" ]; then
+
 while true
 do
-read -p "Enter your username: " username
+
+read -p " Please! Enter your normal username: " username
 
 update_mirrors="
 pacman --noconfirm --needed -S wget vim reflector
@@ -10,8 +13,8 @@ wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-locale.sh;chmod
 wget -c https://raw.githubusercontent.com/4r6h/ArchyMirrorsBD/main/updatemirrors.sh;chmod +x updatemirrors.sh;./updatemirrors.sh
 "
 vmmachine="
-sudo pacman --noconfirm --needed -S virtualbox-guest-utils
-sudo systemctl enable vboxservice.service
+pacman --noconfirm --needed -S virtualbox-guest-utils
+systemctl enable vboxservice.service
 "
 noparu="
 su ${username}
@@ -24,11 +27,12 @@ paru -Syu - <packages.txt --noconfirm --needed
 "
 common="
 wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/InstallFonts.sh;chmod +x InstallFonts.sh;./InstallFonts.sh
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/mybash.sh;chmod +x mybash.sh;./mybash.sh
+wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-bash.sh;chmod +x set-bash.sh;./set-bash.sh
 wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-sddm.sh;chmod +x set-sddm.sh;./set-sddm.sh
 wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-rofi.sh;chmod +x set-rofi.sh;./set-rofi.sh
 wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-alacritty.sh;chmod +x set-alacritty.sh;./set-alacritty.sh
 "
+
 vminstall="
 exec $update_mirrors
 exec $vmmachine
@@ -50,13 +54,20 @@ fi
 exec $common
 "
 
-if [ ! -d /home/$username ]
-then
+if [ ! -d /home/$username ]; then
+
     echo "User does not exist. First create a normal user with home dirrectory and give the user sudo or wheel privilages"
+
 else
-cd /home/$username; mkdir My_Xfce4_Desktop_Scripts; cd My_Xfce4_Desktop_Scripts
+
+	if [ ! -d /home/$username/My_Xfce4_Desktop_Scripts ]; then
+
+		cd /home/$username; mkdir My_Xfce4_Desktop_Scripts; cd My_Xfce4_Desktop_Scripts
+	fi
+
 	read -r -p "Are You Installing in Virtual Machine? then press enter [(Y/n) (defult=Y)] " vm
-    case $vm in
+
+	case $vm in
 	    [yY][eE][sS]|[yY]|$ENTER)
                   exec $vminstall
 		  break
@@ -68,6 +79,25 @@ cd /home/$username; mkdir My_Xfce4_Desktop_Scripts; cd My_Xfce4_Desktop_Scripts
             *)
                   echo "Invalid input..."
                   ;;
-      esac      
+	esac
+	
 fi
+
 done
+
+echo "	
+	----------------------------------------
+	----------Installation Finished---------
+	----------------------------------------"
+else
+
+echo "	
+	----------------------------------------
+	-----------Please Run as Root-----------
+	----------------------------------------"
+fi
+
+
+
+
+
