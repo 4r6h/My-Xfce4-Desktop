@@ -7,6 +7,12 @@ do
 
 read -p " Please! Enter your normal username: " username
 
+if id "$username" >/dev/null 2>&1; then
+
+hd=$( getent passwd "$username" | cut -d: -f6 )
+
+hdp=$(echo ${hd})
+
 update_mirrors="
 pacman --noconfirm --needed -S wget vim reflector
 wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-locale.sh;chmod +x set-locale.sh;./set-locale.sh
@@ -54,15 +60,15 @@ fi
 exec $common
 "
 
-if [ ! -d /home/$username ]; then
+if [ ! -d $hdp ]; then
 
     echo "User does not exist. First create a normal user with home dirrectory and give the user sudo or wheel privilages"
 
 else
 
-	if [ ! -d /home/$username/My_Xfce4_Desktop_Scripts ]; then
+	if [ ! -d $hdp/My_Xfce4_Desktop_Scripts ]; then
 
-		cd /home/$username; mkdir My_Xfce4_Desktop_Scripts; cd My_Xfce4_Desktop_Scripts
+		cd $hdp; mkdir My_Xfce4_Desktop_Scripts; cd My_Xfce4_Desktop_Scripts
 	fi
 
 	read -r -p "Are You Installing in Virtual Machine? then press enter [(Y/n) (defult=Y)] " vm
@@ -83,21 +89,27 @@ else
 	
 fi
 
+else
+
+echo "	
+	----------------------------------------
+	-----------user does not exist----------
+	----------------------------------------
+						"
+fi
+
 done
 
 echo "	
 	----------------------------------------
 	----------Installation Finished---------
-	----------------------------------------"
+	----------------------------------------
+						"
 else
 
 echo "	
 	----------------------------------------
 	-----------Please Run as Root-----------
-	----------------------------------------"
+	----------------------------------------
+						"
 fi
-
-
-
-
-
