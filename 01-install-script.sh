@@ -42,7 +42,7 @@ wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-alacritty.sh;ch
 vminstall="
 exec $update_mirrors
 exec $vmmachine
-if [ -f /bin/paru* ]; then
+if [ -x /bin/paru* ]; [ -x /usr/bin/paru* ]; then
 	exec $yesparu
 else 
 	exec $noparu
@@ -52,7 +52,7 @@ exec $common
 
 normalinstall="
 exec $update_mirrors
-if [ -f /bin/paru* ]; then
+if [ -x /bin/paru* ]; [ -x /usr/bin/paru* ]; then
 	exec $yesparu
 else 
 	exec $noparu
