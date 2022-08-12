@@ -1,14 +1,27 @@
 #!/usr/bin/env bash
 
 if [ $( whoami ) = "root" ]; then
-	
+
+get_scripts () {
+wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-locale.sh
+wget -c https://raw.githubusercontent.com/4r6h/ArchyMirrorsBD/main/updatemirrors.sh
+wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/InstallParu.sh
+wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/InstallFonts.sh
+wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-bash.sh
+wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-sddm.sh
+wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-rofi.sh
+wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-alacritty.sh
+}
+
 	if [ -d My_Xfce4_Desktop_Scripts ]; then
 
                 rm -rf My_Xfce4_Desktop_Scripts
         
 	elif [ ! -d My_Xfce4_Desktop_Scripts ]; then
 
-                mkdir My_Xfce4_Desktop_Scripts; cd My_Xfce4_Desktop_Scripts
+                mkdir My_Xfce4_Desktop_Scripts
+		cd My_Xfce4_Desktop_Scripts
+		get_scripts
         fi
 
 while true
@@ -24,8 +37,8 @@ hdp=$(echo ${hd})
 
 update_mirrors () {
 pacman --noconfirm --needed -S wget vim reflector
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-locale.sh;chmod +x set-locale.sh;./set-locale.sh
-wget -c https://raw.githubusercontent.com/4r6h/ArchyMirrorsBD/main/updatemirrors.sh;chmod +x updatemirrors.sh;./updatemirrors.sh
+./set-locale.sh
+./updatemirrors.sh
 }
 
 vmmachine () {
@@ -35,7 +48,7 @@ systemctl enable vboxservice.service
 
 noparu () {
 su ${username}
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/InstallParu.sh;chmod +x InstallParu.sh;./InstallParu.sh
+./InstallParu.sh
 paru -Syu - <packages.txt --noconfirm --needed 
 }
 
@@ -45,11 +58,11 @@ paru -Syu - <packages.txt --noconfirm --needed
 }
 
 common () {
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/InstallFonts.sh;chmod +x InstallFonts.sh;./InstallFonts.sh
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-bash.sh;chmod +x set-bash.sh;./set-bash.sh
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-sddm.sh;chmod +x set-sddm.sh;./set-sddm.sh
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-rofi.sh;chmod +x set-rofi.sh;./set-rofi.sh
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-alacritty.sh;chmod +x set-alacritty.sh;./set-alacritty.sh
+./InstallFonts.sh
+./set-bash.sh
+./set-sddm.sh
+./set-rofi.sh
+./set-alacritty.sh
 }
 
 vminstall () {
