@@ -8,7 +8,7 @@ if [ $( whoami ) = "root" ]; then
         
 	elif [ ! -d My_Xfce4_Desktop_Scripts ]; then
 
-                rm -rf My_Xfce4_Desktop_Scripts; cd My_Xfce4_Desktop_Scripts
+                mkdir My_Xfce4_Desktop_Scripts; cd My_Xfce4_Desktop_Scripts
         fi
 
 while true
