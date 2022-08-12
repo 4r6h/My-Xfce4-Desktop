@@ -84,13 +84,19 @@ else
 
 	case $vm in
 	    [yY][eE][sS]|[yY]|$ENTER)
+
 vminstall
+cd -
 		  break
 		  ;;
+
             [nN][oO]|[nN])
+
 normalinstall
+cd -
 		  break
 		  ;;
+
             *)
                   echo "Invalid input..."
                   ;;
