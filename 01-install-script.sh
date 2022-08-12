@@ -27,7 +27,7 @@ if [ $( whoami ) = "root" ]; then
 		for get_scripts in "${get_scripts[@]}"; do
 		wget -c -q "$get_scripts"
 		chmod +x *
-		mv ../packages.txt .
+		mv ../packages.txt ./
 							done
 
 
