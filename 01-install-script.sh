@@ -19,15 +19,15 @@ get_scripts=(
 if [ $( whoami ) = "root" ]; then
 
 
-echo "
- +-+-+-+-+-+-+-+ +-+-+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- |W|e|l|c|o|m|e| |m|y| |M|y|-|X|f|c|e|4|-|D|e|s|k|t|o|p|
- +-+-+-+-+-+-+-+ +-+-+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-		Please Wait Don't Panic.
-	    This Might Take a While to Load.
-	 A minimal Xfce4 Desktop Install Script.
-
-"
+	echo "
+		 +-+-+-+-+-+-+-+ +-+-+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+		 |W|e|l|c|o|m|e| |m|y| |M|y|-|X|f|c|e|4|-|D|e|s|k|t|o|p|
+		 +-+-+-+-+-+-+-+ +-+-+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+				Please Wait Don't Panic.
+			    This Might Take a While to Load.
+			 A minimal Xfce4 Desktop Install Script.
+		
+	"
 
 	if [ ! -f packages.txt ]; then
 
