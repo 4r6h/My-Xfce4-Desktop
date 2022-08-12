@@ -40,24 +40,24 @@ wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-alacritty.sh;ch
 "
 
 vminstall="
-exec $update_mirrors
-exec $vmmachine
-if [ -x /bin/paru* ]; [ -x /usr/bin/paru* ]; then
-	exec $yesparu
+ $update_mirrors
+ $vmmachine
+if [ -x /usr/bin/paru* ]; [ -x /usr/bin/paru* ]; then
+	 $yesparu
 else 
-	exec $noparu
+	 $noparu
 fi
-exec $common
+ $common
 "
 
 normalinstall="
-exec $update_mirrors
-if [ -x /bin/paru* ]; [ -x /usr/bin/paru* ]; then
-	exec $yesparu
+ $update_mirrors
+if [ -x /usr/bin/paru* ]; [ -x /usr/bin/paru* ]; then
+	 $yesparu
 else 
-	exec $noparu
+	 $noparu
 fi
-exec $common
+ $common
 "
 
 if [ ! -d $hdp ]; then
@@ -75,11 +75,11 @@ else
 
 	case $vm in
 	    [yY][eE][sS]|[yY]|$ENTER)
-                  exec $vminstall
+                   $vminstall
 		  break
 		  ;;
             [nN][oO]|[nN])
-                  exec $normalinstall
+                   $normalinstall
 		  break
 		  ;;
             *)
