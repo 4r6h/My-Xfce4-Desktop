@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# ***************************************
+# * Author: 4r6h/Rahat		        *
+# * github: https://www.github.com/4r6h *
+# ***************************************
+
 get_scripts=(
 'https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-locale.sh'
 'https://raw.githubusercontent.com/4r6h/ArchyMirrorsBD/main/updatemirrors.sh'
@@ -12,6 +17,17 @@ get_scripts=(
 )
 
 if [ $( whoami ) = "root" ]; then
+
+
+echo "
+ +-+-+-+-+-+-+-+ +-+-+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ |W|e|l|c|o|m|e| |m|y| |M|y|-|X|f|c|e|4|-|D|e|s|k|t|o|p|
+ +-+-+-+-+-+-+-+ +-+-+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+		Please Wait Don't Panic.
+	    This Might Take a While to Load.
+	 A minimal Xfce4 Desktop Install Script.
+
+"
 
 	if [ ! -f packages.txt ]; then
 
@@ -82,7 +98,7 @@ vminstall () {
 update_mirrors
 vmmachine
 
-if [ -x /usr/bin/paru* ]; [ -x /usr/bin/paru* ]; then
+if [ -x /usr/bin/paru* ]; then
 	yesparu
 else 
 	noparu
@@ -93,7 +109,7 @@ fi
 normalinstall () {
 update_mirrors
 
-if [ -x /usr/bin/paru* ]; [ -x /usr/bin/paru* ]; then
+if [ -x /usr/bin/paru* ]; then
 	 yesparu
 else 
 	 noparu
