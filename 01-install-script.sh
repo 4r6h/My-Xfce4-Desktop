@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
 if [ $( whoami ) = "root" ]; then
+	
+	if [ ! -d My_Xfce4_Desktop_Scripts ]; then
+
+                mkdir My_Xfce4_Desktop_Scripts; cd My_Xfce4_Desktop_Scripts
+        fi
 
 while true
 do
@@ -71,12 +76,6 @@ if [ ! -d $hdp ]; then
     echo "User does not exist. First create a normal user with home dirrectory and give the user sudo or wheel privilages"
 
 else
-
-	if [ ! -d $hdp/My_Xfce4_Desktop_Scripts ]; then
-
-		cd $hdp; mkdir My_Xfce4_Desktop_Scripts; cd My_Xfce4_Desktop_Scripts
-	fi
-
 	read -r -p "Are You Installing in Virtual Machine? then press enter [(Y/n) (defult=Y)] " vm
 
 	case $vm in
