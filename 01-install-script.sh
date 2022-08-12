@@ -5,6 +5,8 @@
 # * github: https://www.github.com/4r6h *
 # ***************************************
 
+shopt -s extglob
+
 get_scripts=(
 'https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-locale.sh'
 'https://raw.githubusercontent.com/4r6h/ArchyMirrorsBD/main/updatemirrors.sh'
