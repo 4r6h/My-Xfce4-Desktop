@@ -13,11 +13,18 @@ get_scripts=(
 
 if [ $( whoami ) = "root" ]; then
 
+	if [ ! -f packages.txt ]; then
+
+                wget -c -q https://raw.githubusercontent.com/4r6h/My-Xfce4-Desktop/main/packages.txt
+        fi
+
+	
 	if [ -d My_Xfce4_Desktop_Scripts ]; then
 
 		rm -rf My_Xfce4_Desktop_Scripts
 	fi
 
+	
 	if [ ! -d My_Xfce4_Desktop_Scripts ]; then
 
                 mkdir My_Xfce4_Desktop_Scripts
