@@ -13,10 +13,6 @@ hd=$( getent passwd "$username" | cut -d: -f6 )
 
 hdp=$(echo ${hd})
 
-hello_world () {
-   echo 'hello, world'
-}
-
 update_mirrors () {
 pacman --noconfirm --needed -S wget vim reflector
 wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-locale.sh;chmod +x set-locale.sh;./set-locale.sh
