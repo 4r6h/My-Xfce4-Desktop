@@ -2,27 +2,32 @@
 
 if [ $( whoami ) = "root" ]; then
 
-get_scripts () {
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-locale.sh
-wget -c https://raw.githubusercontent.com/4r6h/ArchyMirrorsBD/main/updatemirrors.sh
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/InstallParu.sh
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/InstallFonts.sh
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-bash.sh
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-sddm.sh
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-rofi.sh
-wget -c https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-alacritty.sh
-}
-
 	if [ -d My_Xfce4_Desktop_Scripts ]; then
 
-                rm -rf My_Xfce4_Desktop_Scripts
-        
-	elif [ ! -d My_Xfce4_Desktop_Scripts ]; then
+		rm -rf My_Xfce4_Desktop_Scripts
+	fi
+
+	if [ ! -d My_Xfce4_Desktop_Scripts ]; then
 
                 mkdir My_Xfce4_Desktop_Scripts
+		mv packages.txt My_Xfce4_Desktop_Scripts
 		cd My_Xfce4_Desktop_Scripts
-		get_scripts
         fi
+
+get_scripts=
+'https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-locale.sh'
+'https://raw.githubusercontent.com/4r6h/ArchyMirrorsBD/main/updatemirrors.sh'
+'https://raw.githubusercontent.com/4r6h/Dot4iles/main/InstallParu.sh'
+'https://raw.githubusercontent.com/4r6h/Dot4iles/main/InstallFonts.sh'
+'https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-bash.sh'
+'https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-sddm.sh'
+'https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-rofi.sh'
+'https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-alacritty.sh'
+
+for get_scripts in "${get_scripts[@]}"; do
+wget -c -q "$get_scripts"
+done
+
 
 while true
 do
@@ -99,14 +104,12 @@ else
 	    [yY][eE][sS]|[yY]|$ENTER)
 
 vminstall
-cd -
 		  break
 		  ;;
 
             [nN][oO]|[nN])
 
 normalinstall
-cd -
 		  break
 		  ;;
 
