@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
 
+get_scripts=(
+'https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-locale.sh'
+'https://raw.githubusercontent.com/4r6h/ArchyMirrorsBD/main/updatemirrors.sh'
+'https://raw.githubusercontent.com/4r6h/Dot4iles/main/InstallParu.sh'
+'https://raw.githubusercontent.com/4r6h/Dot4iles/main/InstallFonts.sh'
+'https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-bash.sh'
+'https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-sddm.sh'
+'https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-rofi.sh'
+'https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-alacritty.sh'
+)
+
 if [ $( whoami ) = "root" ]; then
 
 	if [ -d My_Xfce4_Desktop_Scripts ]; then
@@ -14,19 +25,10 @@ if [ $( whoami ) = "root" ]; then
 		cd My_Xfce4_Desktop_Scripts
         fi
 
-get_scripts=
-'https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-locale.sh'
-'https://raw.githubusercontent.com/4r6h/ArchyMirrorsBD/main/updatemirrors.sh'
-'https://raw.githubusercontent.com/4r6h/Dot4iles/main/InstallParu.sh'
-'https://raw.githubusercontent.com/4r6h/Dot4iles/main/InstallFonts.sh'
-'https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-bash.sh'
-'https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-sddm.sh'
-'https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-rofi.sh'
-'https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-alacritty.sh'
-
-for get_scripts in "${get_scripts[@]}"; do
-wget -c -q "$get_scripts"
-done
+		for get_scripts in "${get_scripts[@]}"; do
+		wget -c -q "$get_scripts"
+		chmod +x *
+		done
 
 
 while true
