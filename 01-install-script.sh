@@ -2,7 +2,11 @@
 
 if [ $( whoami ) = "root" ]; then
 	
-	if [ ! -d My_Xfce4_Desktop_Scripts ]; then
+	if [ -d My_Xfce4_Desktop_Scripts ]; then
+
+                rmdir My_Xfce4_Desktop_Scripts
+        
+	elif [ ! -d My_Xfce4_Desktop_Scripts ]; then
 
                 mkdir My_Xfce4_Desktop_Scripts; cd My_Xfce4_Desktop_Scripts
         fi
