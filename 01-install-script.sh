@@ -21,14 +21,14 @@ if [ $( whoami ) = "root" ]; then
 	if [ ! -d My_Xfce4_Desktop_Scripts ]; then
 
                 mkdir My_Xfce4_Desktop_Scripts
-		mv packages.txt My_Xfce4_Desktop_Scripts
 		cd My_Xfce4_Desktop_Scripts
         fi
 
 		for get_scripts in "${get_scripts[@]}"; do
 		wget -c -q "$get_scripts"
 		chmod +x *
-		done
+		mv ../packages.txt .
+							done
 
 
 while true
