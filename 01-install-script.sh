@@ -121,10 +121,12 @@ fi
 
 if [ ! -d $hdp ]; then
 
-    echo "User does not exist. First create a normal user with home dirrectory and give the user sudo or wheel privilages"
+    echo "User does not exist. First create a normal user 
+	  with home dirrectory and give the user sudo or wheel privilages"
 
 else
-	read -r -p "Are You Installing in Virtual Machine? then press enter [(Y/n) (defult=Y)] " vm
+	echo "Are You Installing in Virtual Machine?"
+	read -r -p " then press enter [(Y/n) (defult=Y)] " vm
 
 	case $vm in
 	    [yY][eE][sS]|[yY]|$ENTER)
@@ -148,10 +150,9 @@ fi
 
 else
 
-echo "	
-	----------------------------------------
+echo "	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	-----------user does not exist----------
-	----------------------------------------
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 						"
 fi
 
@@ -165,8 +166,8 @@ echo "
 else
 
 echo "	
-	----------------------------------------
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	-----------Please Run as Root-----------
-	----------------------------------------
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 						"
 fi
