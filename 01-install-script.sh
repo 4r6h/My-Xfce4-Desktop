@@ -121,11 +121,13 @@ fi
 
 if [ ! -d $hdp ]; then
 
-    echo "User does not exist. First create a normal user 
-	  with home dirrectory and give the user sudo or wheel privilages"
+	echo "User does not exist. First create a normal user
+	      with home dirrectory and give the user sudo or wheel privilages
+	      check the guid in https://github.com/4r6h/My-Xfce4-Desktop
+	     "
 
 else
-	echo "Are You Installing in Virtual Machine?"
+	echo " Are You Installing in Virtual Machine?"
 	read -r -p " then press enter [(Y/n) (defult=Y)] " vm
 
 	case $vm in
