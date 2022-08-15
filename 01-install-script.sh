@@ -21,9 +21,10 @@ welmsg() {
 }
 
 waitmsg() {
+
 	echo "			Please Wait Don't Panic.
 			    This Might Take a While to Load.
-	"
+	     "
 }
 
 link_scripts=(
