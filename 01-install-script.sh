@@ -18,7 +18,7 @@ link_scripts=(
 'https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-alacritty.sh'
 )
 
-dir="Xfce4_Scripts"
+dir="$PWD/Xfce4_Scripts/"
 
 get_scripts() {
 	
@@ -32,17 +32,15 @@ get_scripts() {
 		
 		mkdir $dir
 	else
-		rm -rf $dir/*
+		rm -rf $dir*
 	fi
-		cd $dir
 
 		for link_scripts in "${link_scripts[@]}";	do
 		
-			wget -c -q "$link_scripts"
+			wget -c -q -P $dir "$link_scripts"
 			
-			chmod +x *
+			chmod +x $dir*
 								done
-	mv ../packages.txt ./
 }
 
 update_mirrors() {
@@ -62,13 +60,13 @@ noparu() {
 
 	su ${username}
 	./$dir/InstallParu.sh
-	paru -Syu - <$dir/packages.txt --noconfirm --needed 
+	paru -Syu - <packages.txt --noconfirm --needed 
 }
 
 yesparu() {
 
 	su ${username}
-	paru -Syu - <$dir/packages.txt --noconfirm --needed
+	paru -Syu - <packages.txt --noconfirm --needed
 }
 
 common() {
@@ -82,6 +80,12 @@ common() {
 
 vminstall() {
 
+	echo "			Please Wait Don't Panic.
+			    This Might Take a While to Load.
+	"
+	
+	get_scripts
+	
 	update_mirrors
 
 	vmmachine
@@ -91,12 +95,17 @@ vminstall() {
 	else 
 		noparu
 	fi
-		get_scripts
 		common
 }
 
 normalinstall() {
 
+	echo "			Please Wait Don't Panic.
+			    This Might Take a While to Load.
+	"
+	
+	get_scripts
+	
 	update_mirrors
 
 	if [ -x /usr/bin/paru* ]; then
@@ -104,7 +113,6 @@ normalinstall() {
 	else 
 		noparu
 	fi
-		get_scripts
 		common
 }
 
@@ -116,11 +124,11 @@ if [ $( whoami ) = "root" ]; then
 		 +-+-+-+-+-+-+-+ +-+-+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 		 |W|e|l|c|o|m|e| |m|y| |M|y|-|X|f|c|e|4|-|D|e|s|k|t|o|p|
 		 +-+-+-+-+-+-+-+ +-+-+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+			 A minimal Xfce4 Desktop Install Script.
 				Please Wait Don't Panic.
 			    This Might Take a While to Load.
-			 A minimal Xfce4 Desktop Install Script.
-		
-	"
+
+	    "
 
 while true 
 
