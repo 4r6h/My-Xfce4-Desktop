@@ -7,7 +7,7 @@
 
 shopt -s extglob
 
-get_scripts=(
+link_scripts=(
 'https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-locale.sh'
 'https://raw.githubusercontent.com/4r6h/ArchyMirrorsBD/main/updatemirrors.sh'
 'https://raw.githubusercontent.com/4r6h/Dot4iles/main/InstallParu.sh'
@@ -18,19 +18,7 @@ get_scripts=(
 'https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-alacritty.sh'
 )
 
-if [ $( whoami ) = "root" ]; then
-
-
-	echo "
-		 +-+-+-+-+-+-+-+ +-+-+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-		 |W|e|l|c|o|m|e| |m|y| |M|y|-|X|f|c|e|4|-|D|e|s|k|t|o|p|
-		 +-+-+-+-+-+-+-+ +-+-+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-				Please Wait Don't Panic.
-			    This Might Take a While to Load.
-			 A minimal Xfce4 Desktop Install Script.
-		
-	"
-
+get_scripts () {
 	if [ ! -f packages.txt ]; then
 
                 wget -c -q https://raw.githubusercontent.com/4r6h/My-Xfce4-Desktop/main/packages.txt
@@ -49,22 +37,12 @@ if [ $( whoami ) = "root" ]; then
 		cd My_Xfce4_Desktop_Scripts
         fi
 
-		for get_scripts in "${get_scripts[@]}"; do
-		wget -c -q "$get_scripts"
+		for link_scripts in "${link_scripts[@]}"; do
+		wget -c -q "$link_scripts"
 		chmod +x *
 							done
 		mv ../packages.txt ./
-
-while true
-do
-
-read -p " Please! Enter your normal username: " username
-
-if id "$username" >/dev/null 2>&1; then
-
-hd=$( getent passwd "$username" | cut -d: -f6 )
-
-hdp=$(echo ${hd})
+}
 
 update_mirrors () {
 pacman --noconfirm --needed -S wget vim reflector
@@ -97,58 +75,91 @@ common () {
 }
 
 vminstall () {
-update_mirrors
-vmmachine
 
-if [ -x /usr/bin/paru* ]; then
-	yesparu
-else 
-	noparu
-fi
-	common
+	update_mirrors
+
+	vmmachine
+
+	if [ -x /usr/bin/paru* ]; then
+		yesparu
+	else 
+		noparu
+	fi
+		get_scripts
+		common
 }
 
 normalinstall () {
-update_mirrors
 
-if [ -x /usr/bin/paru* ]; then
-	 yesparu
-else 
-	 noparu
-fi
-	 common
+	update_mirrors
+
+	if [ -x /usr/bin/paru* ]; then
+		yesparu
+	else 
+		noparu
+	fi
+		get_scripts
+		common
 }
 
-if [ ! -d $hdp ]; then
 
-	echo "User does not exist. First create a normal user
-	      with home dirrectory and give the user sudo or wheel privilages
-	      check the guid in https://github.com/4r6h/My-Xfce4-Desktop
-	     "
+if [ $( whoami ) = "root" ]; then
 
-else
-	echo " Are You Installing in Virtual Machine?"
-	read -r -p " then press enter [(Y/n) (defult=Y)] " vm
 
-	case $vm in
-	    [yY][eE][sS]|[yY]|$ENTER)
+	echo "
+		 +-+-+-+-+-+-+-+ +-+-+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+		 |W|e|l|c|o|m|e| |m|y| |M|y|-|X|f|c|e|4|-|D|e|s|k|t|o|p|
+		 +-+-+-+-+-+-+-+ +-+-+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+				Please Wait Don't Panic.
+			    This Might Take a While to Load.
+			 A minimal Xfce4 Desktop Install Script.
+		
+	"
 
-vminstall
-		  break
-		  ;;
+while true 
 
-            [nN][oO]|[nN])
+do
 
-normalinstall
-		  break
-		  ;;
+read -p " Please! Enter your normal username: " username
 
-            *)
-                  echo "Invalid input..."
-                  ;;
-	esac
-	
-fi
+if id "$username" >/dev/null 2>&1; then
+
+hd=$( getent passwd "$username" | cut -d: -f6 )
+
+hdp=$(echo ${hd})
+
+
+	if [ ! -d $hdp ]; then
+
+		echo "User does not exist. First create a normal user with home dirrectory 
+		      and give the user sudo or wheel privilages 
+		      check the guid in https://github.com/4r6h/My-Xfce4-Desktop"
+
+	else
+		echo " Are You Installing in Virtual Machine?"
+		
+		read -r -p " then press enter [(Y/n) (defult=Y)] " vm
+
+		case $vm in
+
+	    		[yY][eE][sS]|[yY]|$ENTER)
+
+				vminstall
+			
+			break ;;
+
+			
+			[nN][oO]|[nN])
+
+				normalinstall
+			
+			break ;;
+
+			
+			*)
+				echo "Invalid input..." ;;
+		esac
+	fi
 
 else
 
