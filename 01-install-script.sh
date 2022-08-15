@@ -18,33 +18,38 @@ link_scripts=(
 'https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-alacritty.sh'
 )
 
-get_scripts() {
+dir="Xfce4_Scripts"
 
+get_scripts() {
+	
 	if [ ! -f packages.txt ]; then
 		
 		wget -c -q https://raw.githubusercontent.com/4r6h/My-Xfce4-Desktop/main/packages.txt
-
-	elif [ ! -d My_Xfce4_Desktop_Scripts ]; then
-
-		mkdir My_Xfce4_Desktop_Scripts
-		cd My_Xfce4_Desktop_Scripts
-	else
-		rm -rf My_Xfce4_Desktop_Scripts
-		mkdir My_Xfce4_Desktop_Scripts
-		cd My_Xfce4_Desktop_Scripts
 	fi
+
+
+	if [ ! -d $dir ]; then
+		
+		mkdir $dir
+	else
+		rm -rf $dir/*
+	fi
+		cd $dir
+
 		for link_scripts in "${link_scripts[@]}";	do
-		wget -c -q "$link_scripts"
-		chmod +x *
+		
+			wget -c -q "$link_scripts"
+			
+			chmod +x *
 								done
-		mv ../packages.txt ./
+	mv ../packages.txt ./
 }
 
 update_mirrors() {
 
 	pacman --noconfirm --needed -S wget vim reflector
-	./set-locale.sh
-	./updatemirrors.sh
+	./$dir/set-locale.sh
+	./$dir/updatemirrors.sh
 }
 
 vmmachine() {
@@ -56,23 +61,23 @@ vmmachine() {
 noparu() {
 
 	su ${username}
-	./InstallParu.sh
-	paru -Syu - <packages.txt --noconfirm --needed 
+	./$dir/InstallParu.sh
+	paru -Syu - <$dir/packages.txt --noconfirm --needed 
 }
 
 yesparu() {
 
 	su ${username}
-	paru -Syu - <packages.txt --noconfirm --needed
+	paru -Syu - <$dir/packages.txt --noconfirm --needed
 }
 
 common() {
 
-	./InstallFonts.sh
-	./set-bash.sh
-	./set-sddm.sh
-	./set-rofi.sh
-	./set-alacritty.sh
+	./$dir/InstallFonts.sh
+	./$dir/set-bash.sh
+	./$dir/set-sddm.sh
+	./$dir/set-rofi.sh
+	./$dir/set-alacritty.sh
 }
 
 vminstall() {
