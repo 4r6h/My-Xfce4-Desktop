@@ -21,27 +21,22 @@ link_scripts=(
 get_scripts() {
 
 	if [ ! -f packages.txt ]; then
+		
+		wget -c -q https://raw.githubusercontent.com/4r6h/My-Xfce4-Desktop/main/packages.txt
 
-                wget -c -q https://raw.githubusercontent.com/4r6h/My-Xfce4-Desktop/main/packages.txt
-        fi
+	elif [ ! -d My_Xfce4_Desktop_Scripts ]; then
 
-	
-	if [ -d My_Xfce4_Desktop_Scripts ]; then
-
-		rm -rf My_Xfce4_Desktop_Scripts
-	fi
-
-	
-	if [ ! -d My_Xfce4_Desktop_Scripts ]; then
-
-                mkdir My_Xfce4_Desktop_Scripts
+		mkdir My_Xfce4_Desktop_Scripts
 		cd My_Xfce4_Desktop_Scripts
-        fi
-
-		for link_scripts in "${link_scripts[@]}"; do
+	else
+		rm -rf My_Xfce4_Desktop_Scripts
+		mkdir My_Xfce4_Desktop_Scripts
+		cd My_Xfce4_Desktop_Scripts
+	fi
+		for link_scripts in "${link_scripts[@]}";	do
 		wget -c -q "$link_scripts"
 		chmod +x *
-							done
+								done
 		mv ../packages.txt ./
 }
 
