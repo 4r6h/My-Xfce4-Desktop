@@ -18,7 +18,7 @@ link_scripts=(
 'https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-alacritty.sh'
 )
 
-get_scripts () {
+get_scripts() {
 
 	if [ ! -f packages.txt ]; then
 
@@ -45,33 +45,33 @@ get_scripts () {
 		mv ../packages.txt ./
 }
 
-update_mirrors () {
+update_mirrors() {
 
 	pacman --noconfirm --needed -S wget vim reflector
 	./set-locale.sh
 	./updatemirrors.sh
 }
 
-vmmachine () {
+vmmachine() {
 
 	pacman --noconfirm --needed -S virtualbox-guest-utils
 	systemctl enable vboxservice.service
 }
 
-noparu () {
+noparu() {
 
 	su ${username}
 	./InstallParu.sh
 	paru -Syu - <packages.txt --noconfirm --needed 
 }
 
-yesparu () {
+yesparu() {
 
 	su ${username}
 	paru -Syu - <packages.txt --noconfirm --needed
 }
 
-common () {
+common() {
 
 	./InstallFonts.sh
 	./set-bash.sh
@@ -80,7 +80,7 @@ common () {
 	./set-alacritty.sh
 }
 
-vminstall () {
+vminstall() {
 
 	update_mirrors
 
@@ -95,7 +95,7 @@ vminstall () {
 		common
 }
 
-normalinstall () {
+normalinstall() {
 
 	update_mirrors
 
