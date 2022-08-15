@@ -19,6 +19,7 @@ link_scripts=(
 )
 
 get_scripts () {
+
 	if [ ! -f packages.txt ]; then
 
                 wget -c -q https://raw.githubusercontent.com/4r6h/My-Xfce4-Desktop/main/packages.txt
@@ -45,33 +46,38 @@ get_scripts () {
 }
 
 update_mirrors () {
-pacman --noconfirm --needed -S wget vim reflector
-./set-locale.sh
-./updatemirrors.sh
+
+	pacman --noconfirm --needed -S wget vim reflector
+	./set-locale.sh
+	./updatemirrors.sh
 }
 
 vmmachine () {
-pacman --noconfirm --needed -S virtualbox-guest-utils
-systemctl enable vboxservice.service
+
+	pacman --noconfirm --needed -S virtualbox-guest-utils
+	systemctl enable vboxservice.service
 }
 
 noparu () {
-su ${username}
-./InstallParu.sh
-paru -Syu - <packages.txt --noconfirm --needed 
+
+	su ${username}
+	./InstallParu.sh
+	paru -Syu - <packages.txt --noconfirm --needed 
 }
 
 yesparu () {
-su ${username}
-paru -Syu - <packages.txt --noconfirm --needed
+
+	su ${username}
+	paru -Syu - <packages.txt --noconfirm --needed
 }
 
 common () {
-./InstallFonts.sh
-./set-bash.sh
-./set-sddm.sh
-./set-rofi.sh
-./set-alacritty.sh
+
+	./InstallFonts.sh
+	./set-bash.sh
+	./set-sddm.sh
+	./set-rofi.sh
+	./set-alacritty.sh
 }
 
 vminstall () {
