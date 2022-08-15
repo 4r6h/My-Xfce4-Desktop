@@ -7,6 +7,25 @@
 
 shopt -s extglob
 
+welmsg() {
+
+	echo "
+		 +-+-+-+-+-+-+-+ +-+-+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+		 |W|e|l|c|o|m|e| |m|y| |M|y|-|X|f|c|e|4|-|D|e|s|k|t|o|p|
+		 +-+-+-+-+-+-+-+ +-+-+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+			 A minimal Xfce4 Desktop Install Script.
+				Please Wait Don't Panic.
+			    This Might Take a While to Load.
+
+	    "
+}
+
+waitmsg() {
+	echo "			Please Wait Don't Panic.
+			    This Might Take a While to Load.
+	"
+}
+
 link_scripts=(
 'https://raw.githubusercontent.com/4r6h/Dot4iles/main/set-locale.sh'
 'https://raw.githubusercontent.com/4r6h/ArchyMirrorsBD/main/updatemirrors.sh'
@@ -79,10 +98,8 @@ common() {
 }
 
 vminstall() {
-
-	echo "			Please Wait Don't Panic.
-			    This Might Take a While to Load.
-	"
+	
+	waitmsg
 	
 	get_scripts
 	
@@ -99,10 +116,8 @@ vminstall() {
 }
 
 normalinstall() {
-
-	echo "			Please Wait Don't Panic.
-			    This Might Take a While to Load.
-	"
+	
+	waitmsg
 	
 	get_scripts
 	
@@ -119,16 +134,7 @@ normalinstall() {
 
 if [ $( whoami ) = "root" ]; then
 
-
-	echo "
-		 +-+-+-+-+-+-+-+ +-+-+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-		 |W|e|l|c|o|m|e| |m|y| |M|y|-|X|f|c|e|4|-|D|e|s|k|t|o|p|
-		 +-+-+-+-+-+-+-+ +-+-+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-			 A minimal Xfce4 Desktop Install Script.
-				Please Wait Don't Panic.
-			    This Might Take a While to Load.
-
-	    "
+	welmsg
 
 while true 
 
