@@ -1,6 +1,6 @@
 # My-Xfce4-Desktop
 
-Nothing but a Script to setup *Xfce Desktop* with **Sddm-Sugar-Candy-Theme**.
+Nothing but a Script to setup ***Xfce Desktop*** with **Sddm-Sugar-Candy-Theme**.
 
 <div align='center'>
 
