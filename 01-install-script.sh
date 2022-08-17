@@ -132,6 +132,7 @@ normalinstall() {
 		common
 }
 
+main() {
 
 if [ $( whoami ) = "root" ]; then
 
@@ -207,3 +208,7 @@ echo "
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 						"
 fi
+
+}
+
+main
