@@ -13,7 +13,7 @@ welmsg() {
 		 +-+-+-+-+-+-+-+ +-+-+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 		 |W|e|l|c|o|m|e| |m|y| |M|y|-|X|f|c|e|4|-|D|e|s|k|t|o|p|
 		 +-+-+-+-+-+-+-+ +-+-+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-			 A minimal Xfce4 Desktop Install Script.
+			 A Minimal Xfce4 Desktop Install Script.
 				Please Wait Don't Panic.
 			    This Might Take a While to Load.
 
