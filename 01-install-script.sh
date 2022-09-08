@@ -65,27 +65,25 @@ get_scripts() {
 
 update_mirrors() {
 
-	pacman --noconfirm --needed -S wget vim reflector
+	sudo pacman --noconfirm --needed -S wget vim reflector
 	./$dir/set-locale.sh
-	./$dir/updatemirrors.sh
+	sudo ./$dir/updatemirrors.sh
 }
 
 vmmachine() {
 
-	pacman --noconfirm --needed -S virtualbox-guest-utils
-	systemctl enable vboxservice.service
+	sudo pacman --noconfirm --needed -S virtualbox-guest-utils
+	sudo systemctl enable vboxservice.service
 }
 
 noparu() {
 
-	su ${username}
 	./$dir/InstallParu.sh
 	paru -Syu - <packages.txt --noconfirm --needed 
 }
 
 yesparu() {
 
-	su ${username}
 	paru -Syu - <packages.txt --noconfirm --needed
 }
 
@@ -108,7 +106,8 @@ vminstall() {
 
 	vmmachine
 
-	if [ -x /usr/bin/paru* ]; then
+	if [[ -z $(which paru) ]]; then
+
 		yesparu
 	else 
 		noparu
@@ -124,7 +123,8 @@ normalinstall() {
 	
 	update_mirrors
 
-	if [ -x /usr/bin/paru* ]; then
+	if [[ -z $(which paru) ]]; then
+
 		yesparu
 	else 
 		noparu
@@ -134,7 +134,7 @@ normalinstall() {
 
 main() {
 
-if [ $( whoami ) = "root" ]; then
+if [[ $(whoami) -ne "root" ]]; then
 
 	welmsg
 
@@ -142,24 +142,11 @@ while true
 
 do
 
-read -p " Please! Enter your normal username: " username
-
-if id "$username" >/dev/null 2>&1; then
-
-hd=$( getent passwd "$username" | cut -d: -f6 )
-
-hdp=$(echo ${hd})
+home_dir=$(echo $HOME)
 
 
-	if [ ! -d $hdp ]; then
+	if [[ -d $home_dir ]]; then
 
-		echo -e "\n User does not exist. First create a normal user with home dirrectory
-
-					and give the user sudo or wheel privilages 
-	
-				check the guid in https://github.com/4r6h/My-Xfce4-Desktop \n"
-
-	else
 		echo -e "\n Are You Installing in Virtual Machine? \n"
 		
 		read -r -p " then press enter [(Y/n) (defult=Y)] " vm
@@ -183,15 +170,9 @@ hdp=$(echo ${hd})
 			*)
 				echo "Invalid input..." ;;
 		esac
+	else
+		echo "Home directory not found!"
 	fi
-
-else
-
-echo "	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	-----------user does not exist----------
-	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-						"
-fi
 
 done
 
@@ -204,7 +185,7 @@ else
 
 echo "	
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	-----------Please Run as Root-----------
+	-----------Cannot Run as Root-----------
 	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 						"
 fi
